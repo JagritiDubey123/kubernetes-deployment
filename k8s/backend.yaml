@@ -16,6 +16,7 @@ spec:
       containers:
         - name: backend
           image: gcr.io/jagriti-411012/backend
+          imagePullPolicy: Always
           ports:
             - containerPort: 8000
 
