@@ -14,7 +14,7 @@ spec:
     spec:   # This should be aligned with 'metadata'
       containers:
         - name: frontend
-          image: gcr.io/jagriti-411012/frontend:v1
+          image: gcr.io/jagriti-411012/frontend
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
