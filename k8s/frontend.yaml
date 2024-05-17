@@ -12,12 +12,15 @@ spec:
     metadata:
       labels:
         app: frontend
-    spec:
-      containers:
-        - name: frontend
-          image: gcr.io/jagriti-411012/frontend:v1
-          ports:
-            - containerPort: 5000
+      spec:
+  containers:
+    - name: frontend
+      image: gcr.io/jagriti-411012/frontend:v1
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 5000
+  
+
 
 ---
 apiVersion: v1
