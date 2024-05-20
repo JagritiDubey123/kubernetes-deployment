@@ -7,7 +7,4 @@ CREATE TABLE  EMPLOYEES (
     emp_add VARCHAR(250)
 )
 INSERT INTO EMPLOYEES (emp_id,emp_name, emp_contact, emp_add)
-VALUES
-    (1,'Jagriti', 7007220804, "Gorakhpur"),
-        (2,'Saloni', 7007220805, "Lucknow"),
-       (3,'Kajal', 7007220889, "sant kabir nagar");
+VALUES (1, 'Jagriti', 700722004, "Gorakhpur"),(2, 'Saloni', 70020805, "Lucknow"),(3, 'Kajal', 70072889, "sant kabir nagar");
