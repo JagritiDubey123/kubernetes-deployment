@@ -64,13 +64,13 @@ pipeline {
                 git branch: 'main', credentialsId: '1', url: 'https://github.com/JagritiDubey123/Jenkins.git'
             }
         }
-       stage('Build Docker Image') {
+      stage('Build Docker Images') {
             steps {
                 script {
-                    // Build Docker images for frontend, backend, and MySQL
-                    sh "docker build -f FrontEnd/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME} ./FrontEnd"
-                    sh "docker build  -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image2} ./backend"
-                    sh "docker build  -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image3} ./mysql"
+                    // Build Docker images for each service
+                    sh "docker build -f FrontEnd/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${FRONTEND_IMAGE_NAME}:${TAG} ./FrontEnd"
+                    sh "docker build -f backend/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${BACKEND_IMAGE_NAME}:${TAG} ./backend"
+                    sh "docker build -f mysql/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${MYSQL_IMAGE_NAME}:${TAG} ./mysql"
                 }
             }
         }
