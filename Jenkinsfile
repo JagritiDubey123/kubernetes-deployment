@@ -69,8 +69,8 @@ pipeline {
                 script {
                     // Build Docker images for frontend, backend, and MySQL
                     sh "docker build -f FrontEnd/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME} ./FrontEnd"
-                    sh "docker build -f backend/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image2} ./backend"
-                    sh "docker build -f mysql/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image3} ./mysql"
+                    sh "docker build  -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image2} ./backend"
+                    sh "docker build  -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image3} ./mysql"
                 }
             }
         }
