@@ -98,10 +98,10 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Build Docker image
-                    sh "docker build -f FrontEnd/Dockerfile ."
-                    sh "docker build -f backend/Dockerfile ."
-                    sh "docker build -f mysql/Dockerfile ."
+                    // Build Docker images
+                    sh "docker build -f FrontEnd/Dockerfile -t $IMAGE_NAME:$TAG ."
+                    sh "docker build -f backend/Dockerfile -t $image2:$TAG ."
+                    sh "docker build -f mysql/Dockerfile -t $image3:$TAG ."
                 }
             }
         }
