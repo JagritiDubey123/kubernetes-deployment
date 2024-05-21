@@ -64,13 +64,13 @@ pipeline {
                 git branch: 'main', credentialsId: '1', url: 'https://github.com/JagritiDubey123/Jenkins.git'
             }
         }
-        stage('Build Docker Image') {
+       stage('Build Docker Image') {
             steps {
                 script {
-                    // Build Docker image
-                    sh "docker build -f FrontEnd/Dockerfile -t ${IMAGE_NAME} ./FrontEnd"
-                    sh "docker build -f backend/Dockerfile -t ${image2} ./backend"
-                    sh "docker build -f mysql/Dockerfile -t ${image3} ./mysql"
+                    // Build Docker images for frontend, backend, and MySQL
+                    sh "docker build -f FrontEnd/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME} ./FrontEnd"
+                    sh "docker build -f backend/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image2} ./backend"
+                    sh "docker build -f mysql/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image3} ./mysql"
                 }
             }
         }
@@ -84,9 +84,9 @@ pipeline {
                     }
 
                     // Tag Docker images with GCR URL
-                    sh "docker tag ${IMAGE_NAME} ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}"
-                    sh "docker tag ${image2} ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image2}"
-                    sh "docker tag ${image3} ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image3}"
+                    // sh "docker tag ${IMAGE_NAME} ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}"
+                    // sh "docker tag ${image2} ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image2}"
+                    // sh "docker tag ${image3} ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image3}"
 
                     // Push Docker images to GCR
                     sh "docker push ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}"
