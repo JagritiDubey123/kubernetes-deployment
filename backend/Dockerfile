@@ -36,8 +36,8 @@ FROM node:14
 WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json (if available)
-COPY ./backend/package.json /usr/src/app/
-
+# COPY ./backend/package.json /usr/src/app/
+RUN cp backend/package.json /usr/src/app
 
 # Install backend dependencies
 RUN npm install
