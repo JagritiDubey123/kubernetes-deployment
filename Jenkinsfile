@@ -84,9 +84,9 @@ pipeline {
                     }
 
                     // Tag Docker images with GCR URL
-                    sh "docker tag ${IMAGE_NAME}:${TAG} ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}"
-                    sh "docker tag ${image2}:${TAG} ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image2}"
-                    sh "docker tag ${image3}:${TAG} ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image3}"
+                    sh "docker tag ${IMAGE_NAME} ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}"
+                    sh "docker tag ${image2} ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image2}"
+                    sh "docker tag ${image3} ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image3}"
 
                     // Push Docker images to GCR
                     sh "docker push ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}"
