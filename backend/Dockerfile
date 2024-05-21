@@ -1,12 +1,30 @@
-FROM node
+# FROM node
+# RUN mkdir -p /usr/src/app
+# WORKDIR /usr/src/app
+# COPY backend/package.json ./
+# # COPY backend/package.json /usr/src/app
+# RUN npm install
+# # COPY . .
+# COPY backend/. .
+# EXPOSE 8000
+# EXPOSE 3306
+# CMD ["node", "app.js"]
+# # COPY . /usr/src/app
+
+FROM node:14
+
+# Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-COPY backend/package.json ./
-# COPY backend/package.json /usr/src/app
+
+# Copy package.json and package-lock.json
+COPY package.json /usr/src/app/
+
+# Install app dependencies
 RUN npm install
-# COPY . .
-COPY backend/. .
+
+# Bundle app source
+COPY . /usr/src/app
+
 EXPOSE 8000
-EXPOSE 3306
-CMD ["node", "app.js"]
-# COPY . /usr/src/app
+CMD [ "node", "src/index.js" ]
