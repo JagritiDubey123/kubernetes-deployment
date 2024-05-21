@@ -29,21 +29,12 @@
 # EXPOSE 8000
 # CMD [ "node", "src/index.js" ]
 
-FROM node:14
-
-# Create app directory
+FROM node
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-
-# Copy package.json and package-lock.json if available
-COPY package.json /usr/src/app/
-COPY package-lock.json /usr/src/app/  # If you have a package-lock.json file
-
-# Install app dependencies
+COPY package.json /usr/src/app
 RUN npm install
-
-# Bundle app source
 COPY . /usr/src/app
-
 EXPOSE 8000
-CMD [ "node", "app.js" ]  # Update this line to match your main file
+EXPOSE 3306
+CMD ["npm", "start"]
