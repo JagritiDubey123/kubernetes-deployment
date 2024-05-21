@@ -11,20 +11,32 @@
 # CMD ["node", "app.js"]
 # # COPY . /usr/src/app
 
-FROM node:14
+# FROM node:14
 
-# Create app directory
+# # Create app directory
+# RUN mkdir -p /usr/src/app
+# WORKDIR /usr/src/app
+
+# # Copy package.json and package-lock.json
+# COPY package.json /usr/src/app/
+
+# # Install app dependencies
+# RUN npm install
+
+# # Bundle app source
+# COPY . /usr/src/app
+
+# EXPOSE 8000
+# CMD [ "node", "src/index.js" ]
+
+
+
+FROM node
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-
-# Copy package.json and package-lock.json
-COPY package.json /usr/src/app/
-
-# Install app dependencies
+COPY package.json /usr/src/app
 RUN npm install
-
-# Bundle app source
 COPY . /usr/src/app
-
 EXPOSE 8000
-CMD [ "node", "src/index.js" ]
+EXPOSE 3306
+CMD ["npm", "start"]
