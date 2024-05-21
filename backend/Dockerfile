@@ -29,24 +29,12 @@
 # EXPOSE 8000
 # CMD [ "node", "src/index.js" ]
 
-# Use a Node.js base image
 FROM node:14
-
-# Set the working directory in the container
+RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-
-# Copy package.json and package-lock.json (if available)
-# COPY ./backend/package.json /usr/src/app/
 RUN cp backend/package.json /usr/src/app
-
-# Install backend dependencies
 RUN npm install
-
-# Copy the rest of the backend application code
-COPY . .
-
-# Expose the port the backend app runs on
+COPY . /usr/src/app
 EXPOSE 8000
-
-# Command to run the backend app
-CMD ["node", "app.js"]
+EXPOSE 3306
+CMD ["npm", "start"]
