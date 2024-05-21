@@ -52,7 +52,7 @@ pipeline {
         IMAGE_NAME = "frontend" // Your Docker image name
         image2 = "backend"
         image3 = "mysql"
-        // TAG = "latest"  // Tag for your Docker image
+        TAG = "latest"  // Tag for your Docker image
         GCP_PROJECT_ID = "jagriti-411012"  // Your GCP project ID
         GCP_SERVICE_ACCOUNT_KEY = credentials('GCP_ID')  // Jenkins credentials for GCP service account key file
         KUBE_CONFIG = credentials('kubeconfig') // Jenkins credentials for Kubernetes config
