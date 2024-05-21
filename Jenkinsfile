@@ -99,9 +99,9 @@ pipeline {
             steps {
                 script {
                     // Build Docker images
-                    sh "docker build -f FrontEnd/Dockerfile -t $IMAGE_NAME:$TAG ."
-                    sh "docker build -f backend/Dockerfile -t $image2:$TAG ."
-                    sh "docker build -f mysql/Dockerfile -t $image3:$TAG ."
+                   sh "docker build -f FrontEnd/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME} ./FrontEnd"
+                    sh "docker build -f backend/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image2} ./backend"
+                    sh "docker build -f mysql/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image3} ./mysql"
                 }
             }
         }
