@@ -52,7 +52,7 @@ pipeline {
         IMAGE_NAME = "frontend" // Your Docker image name
         image2 = "backend"
         image3 = "mysql"
-        TAG = "latest"  // Tag for your Docker image
+        // TAG = "latest"  // Tag for your Docker image
         GCP_PROJECT_ID = "jagriti-411012"  // Your GCP project ID
         GCP_SERVICE_ACCOUNT_KEY = credentials('GCP_ID')  // Jenkins credentials for GCP service account key file
         KUBE_CONFIG = credentials('kubeconfig') // Jenkins credentials for Kubernetes config
@@ -68,9 +68,9 @@ pipeline {
             steps {
                 script {
                     // Build Docker images for each service
-                    sh "docker build -f FrontEnd/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${FRONTEND_IMAGE_NAME}:${TAG} ./FrontEnd"
-                    sh "docker build -f backend/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${BACKEND_IMAGE_NAME}:${TAG} ./backend"
-                    sh "docker build -f mysql/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${MYSQL_IMAGE_NAME}:${TAG} ./mysql"
+                    sh "docker build -f FrontEnd/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${FRONTEND_IMAGE_NAME} ./FrontEnd"
+                    sh "docker build -f backend/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${BACKEND_IMAGE_NAME} ./backend"
+                    sh "docker build -f mysql/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${MYSQL_IMAGE_NAME} ./mysql"
                 }
             }
         }
