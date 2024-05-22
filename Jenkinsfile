@@ -85,8 +85,11 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 // Use Kubernetes credentials and apply Kubernetes YAML files
-                withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
-                    sh 'export KUBECONFIG=$KUBECONFIG && kubectl apply -f frontend.yaml -f backend.yaml -f mysql.yaml'
+                withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBE_CONFIG')]) {
+                    sh 'export KUBE_CONFIG=$KUBE_CONFIG '
+                    sh 'gcloud container clusters get-credentials giit-gke-cluster --zone us-central1-a --project jagriti-411012'
+                    sh 'kubectl apply -f k8s/.'
+                    
                 }
             }
         }
