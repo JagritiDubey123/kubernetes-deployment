@@ -29,12 +29,12 @@
 # EXPOSE 8000
 # CMD [ "node", "src/index.js" ]
 
-FROM node:14
+FROM node
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-COPY backend/package.json ./
+COPY . .
 RUN npm install
-COPY backend/. .
+COPY . /usr/src/app
 EXPOSE 8000
 EXPOSE 3306
 CMD ["npm", "start"]
