@@ -32,9 +32,9 @@
 FROM node:14
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-COPY package.json ./
+COPY backend/package.json ./
 RUN npm install
-COPY . /usr/src/app
+COPY backend/. .
 EXPOSE 8000
 EXPOSE 3306
 CMD ["npm", "start"]
