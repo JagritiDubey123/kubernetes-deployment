@@ -55,7 +55,7 @@ pipeline {
                     // Build Docker images
                     sh "docker build -f FrontEnd/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}:${TAG} ./FrontEnd"
                     sh "docker build  -f backend/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image2}:${TAG} ./backend"
-                    sh "docker build  -f mysql/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image33}:${TAG} ./mysql"
+                    sh "docker build  -f mysql/Dockerfile -t ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image3}:${TAG} ./mysql"
                 }
             }
         }
