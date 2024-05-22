@@ -15,7 +15,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', credentialsId: '1', url: 'https://github.com/JagritiDubey123/Jenkins.git'
+                git branch: 'jenkins', credentialsId: '1', url: 'https://github.com/JagritiDubey123/Jenkins.git'
             }
         }
       // stage('Build Docker Images') {
